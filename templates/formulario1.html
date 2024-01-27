@@ -1,0 +1,20 @@
+
+{%extends 'layout.html' %}
+
+{%block content%}
+
+<form action="/operacion" method="POST">
+    <label>N1:</label>
+    <input type="text" name="n1" /><br>
+    <label>N2:</label>
+    <input type="text" name="n2" /><br>
+    <label>Suma</label>
+    <input name="oper" type="radio"  value="sum" /><br>
+    <input name="oper" type="radio" value="res" /><br>
+    <input  name="oper"type="radio" value="mul" /><br>
+    <input name="oper" type="radio" value="div" /><br>
+    <input type="submit" />
+</form>
+
+
+{%endblock%}
