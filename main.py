@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import forms
 
 
 app = Flask(__name__)
@@ -36,9 +37,20 @@ def suma(n1, n2):
 def func1(ab="UTL"):
     return "El valor es " + ab
 
-@app.route("/alumnos")
+@app.route("/alumnos", methods=["GET", "POST"])
 def alumnos():
-    return render_template("alumnos.html")
+    alum_form = forms.UsersForm(request.form)
+    if request.method == 'POST':
+        nom = alum_form.nombre.data
+        apa = alum_form.apaterno.data
+        ama = alum_form.amaterno.data
+        edad = alum_form.edad.data
+
+        print("Nombre: {}".format(nom))
+        print("Apaterno: {}".format(apa))
+        print("Amaterno: {}".format(ama))
+
+    return render_template("alumnos.html", form=alum_form, nom=nom, apa=apa, ama=ama)
 
 @app.route("/maestros")
 def maestros():
