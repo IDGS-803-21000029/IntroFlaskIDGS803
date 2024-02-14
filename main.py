@@ -39,8 +39,11 @@ def func1(ab="UTL"):
 
 @app.route("/alumnos", methods=["GET", "POST"])
 def alumnos():
+    nom = ''
+    apa = ''
+    ama = ''
     alum_form = forms.UsersForm(request.form)
-    if request.method == 'POST':
+    if request.method == 'POST' and alum_form.validate():
         nom = alum_form.nombre.data
         apa = alum_form.apaterno.data
         ama = alum_form.amaterno.data
