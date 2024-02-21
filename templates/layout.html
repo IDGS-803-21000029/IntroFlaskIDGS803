@@ -49,7 +49,18 @@
     </div>
 
     <div class="container">
+        <!--Mostrar Mensajes de Flash-->
+        {%with messages = get_flashed_messages()%}
+          {%if messages%}
+            {%for message in messages%}
+              <div class="alert alert-success">
+                {{message}}
+              </div>
+            {%endfor%}
+          {%endif%}
+        {%endwith%}
 
+        <!--Mostrar Mensajes de Flash-->
         {%block content%} 
         
         {%endblock%}</div>
